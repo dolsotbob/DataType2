@@ -93,7 +93,7 @@ contract DataType2 {
         view
         returns (
             string memory,
-            uint256[] memory,
+            uint256[] memory, //배열은 참조형이라 memory 붙임
             string[] memory,
             bytes32,
             bytes memory
