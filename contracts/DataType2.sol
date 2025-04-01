@@ -9,6 +9,9 @@ contract DataType2 {
         string name;
         uint256 age;
     }
+    bytes private dynamicData;
+    bytes32 private fixedData =
+        0xabcdef1234560000000000000000000000000000000000000000000000000000;
 
     function getMessage() public view returns (string memory) {
         return message;
@@ -56,5 +59,46 @@ contract DataType2 {
         uint256 _age
     ) public {
         users[_address] = User(_name, _age);
+    }
+
+    function getUser(
+        address _address
+    ) public view returns (string memory, uint256) {
+        if (
+            bytes(users[_address].name).length == 0 && users[_address].age == 0
+        ) {
+            return ("", 0); //기본값 반환
+        }
+        return (users[_address].name, users[_address].age);
+    }
+
+    function setDynamicData(bytes memory _dynamicData) public {
+        dynamicData = _dynamicData;
+    }
+
+    function getDynamicData() public view returns (bytes memory) {
+        return dynamicData;
+    }
+
+    function setFixedData(bytes32 _fixedData) public {
+        fixedData = _fixedData;
+    }
+
+    function getFixedData() public view returns (bytes32) {
+        return fixedData;
+    }
+
+    function getDetails()
+        public
+        view
+        returns (
+            string memory,
+            uint256[] memory,
+            string[] memory,
+            bytes32,
+            bytes memory
+        )
+    {
+        return (message, numbers, names, fixedData, dynamicData);
     }
 }

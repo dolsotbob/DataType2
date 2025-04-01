@@ -263,7 +263,7 @@ describe('DataType2', function () {
       it('setFixedData 호출 시 인자(bytes32)를 받아 fixedData가 올바르게 변경되어야 합니다.', async function () {
         const isChanged =
           (await contract.getFixedData()) ===
-          '0xabcdef1234560000000000000000000000000000000000000000000000000000'
+            '0xabcdef1234560000000000000000000000000000000000000000000000000000'
             ? false
             : true;
         const newFixedData =
@@ -273,7 +273,7 @@ describe('DataType2', function () {
 
         const isChange =
           (await contract.getFixedData()) ===
-          '0xabcdef1234560000000000000000000000000000000000000000000000000000'
+            '0xabcdef1234560000000000000000000000000000000000000000000000000000'
             ? false
             : true;
 
